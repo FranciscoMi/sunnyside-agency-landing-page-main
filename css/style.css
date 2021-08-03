@@ -1,16 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap");
 
+:root {
+  --fontfamilyfirst: "Barlow", sans-serif;
+  --fontfamilysecond: "Fraunces", serif;
+}
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
-  /*font-family: "Barlow", sans-serif;*/
-  /*font-family: "Fraunces", serif;*/
 }
 
 body {
   margin: 0;
   font-size: 18px;
+  font-family: var(--fontfamilyfirst);
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
@@ -25,15 +29,14 @@ body {
   color: hsl(0, 0%, 100%);
 }
 .header__menu {
-  padding: 2em;
   display: flex;
+  padding: 2em;
   justify-content: space-between;
 }
 
 .link__menu,
 .link__menu-contact {
   display: inline-block;
-  font-family: "Barlow", sans-serif;
   color: hsl(0, 0%, 100%);
   font-size: 1em;
   text-decoration: none;
@@ -41,7 +44,7 @@ body {
 }
 
 .link__menu-contact {
-  font-family: "Fraunces", serif;
+  font-family: var(--fontfamilysecond);
   color: black;
   font-variant: small-caps;
   background-color: hsl(0, 0%, 100%);
@@ -49,17 +52,91 @@ body {
   padding: 0.5em 1em;
   margin: 0 0.5em;
 }
-
+/*
+Para modificar los atributos de los elementos se encierran entre corchetes
+El apóstrofe ^ nos permite modificar los estilos por el comienzo
+*/
 [class^="main__title"] {
-  font-family: "Fraunces", serif;
+  font-family: var(--fontfamilysecond);
+  /*font-weight: 900;*/
+  font-weight: bolder;
 }
 
 .main__title-first {
-  margin-top: 1em;
-  text-align: center;
   font-size: 4em;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
 }
 
+.main__title-second {
+  font-size: 2em;
+  color: black;
+}
+
+.main__title-third {
+  font-size: 1.5em;
+}
+
+.main__title-fourth {
+  width: 100%;
+  font-variant: small-caps;
+  color: black;
+}
 .design {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.design__type {
+  display: flex;
+  flex: 0 0 50%;
+  flex-direction: column;
+  color: hsl(213, 9%, 39%);
+  align-self: center;
+  padding: 0 5%;
+}
+
+.design__type > div {
+  width: 370px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.design__img {
+  flex: 0 0 50%;
+}
+
+[class^="design__"] > img {
+  display: block;
+  max-width: 100%;
+}
+
+.design__type:nth-child(4) {
+  order: 3;
+}
+
+.design__type:nth-child(3) {
+  order: 4;
+}
+
+#design__box5 {
+  color: hsl(167, 40%, 24%);
+  background-image: url("../images/desktop/image-graphic-design.jpg");
+  order: 5;
+}
+
+#design__box6 {
+  color: hsl(198, 62%, 26%);
+  background-image: url("../images/desktop/image-photography.jpg");
+  order: 6;
+}
+
+.design__type:nth-child(5),
+.design__type:nth-child(6) {
+  background-position: top;
+  background-size: cover;
+  text-align: center;
+  max-width: auto;
+  max-height: fit-content;
+  padding: 25% 0 5% 0;
 }
