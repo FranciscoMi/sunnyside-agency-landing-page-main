@@ -16,6 +16,7 @@ body {
   font-size: 18px;
   font-family: var(--fontfamilyfirst);
   max-width: 1440px;
+  min-width: 350px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -28,14 +29,24 @@ body {
   height: 100vh;
   color: hsl(0, 0%, 100%);
 }
+
 .header__menu {
   display: flex;
   padding: 2em;
   justify-content: space-between;
 }
 
-.link__menu,
-.link__menu-contact {
+.link__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link__option,
+.link__option-contact {
   display: inline-block;
   color: hsl(0, 0%, 100%);
   font-size: 1em;
@@ -43,7 +54,7 @@ body {
   padding: 0 1em;
 }
 
-.link__menu-contact {
+.link__option-contact {
   font-family: var(--fontfamilysecond);
   color: black;
   font-variant: small-caps;
@@ -58,8 +69,8 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 */
 [class^="main__title"] {
   font-family: var(--fontfamilysecond);
-  /*font-weight: 900;*/
   font-weight: bolder;
+  width: fit-content;
 }
 
 .main__title-first {
@@ -82,28 +93,34 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   font-variant: small-caps;
   color: black;
 }
+
 .design {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .design__type {
   display: flex;
-  flex: 0 0 50%;
+  flex: 0 1 50%;
   flex-direction: column;
   color: hsl(213, 9%, 39%);
-  align-self: center;
   padding: 0 5%;
-}
-
-.design__type > div {
-  width: 370px;
+  min-width: calc(100%-200px);
   margin-left: auto;
   margin-right: auto;
 }
+
+.design__type > div {
+  min-width: calc(100%-170px);
+  max-width: calc(100%-200px);
+}
+
 .design__img {
-  flex: 0 0 50%;
+  flex: 0 1 50%;
+  min-width: calc(100%-200px);
+  align-self: stretch;
 }
 
 [class^="design__"] > img {
@@ -111,32 +128,144 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   max-width: 100%;
 }
 
-.design__type:nth-child(4) {
-  order: 3;
-}
-
-.design__type:nth-child(3) {
-  order: 4;
-}
-
 #design__box5 {
   color: hsl(167, 40%, 24%);
   background-image: url("../images/desktop/image-graphic-design.jpg");
-  order: 5;
 }
 
 #design__box6 {
   color: hsl(198, 62%, 26%);
   background-image: url("../images/desktop/image-photography.jpg");
-  order: 6;
 }
 
 .design__type:nth-child(5),
 .design__type:nth-child(6) {
-  background-position: top;
+  background-position: center;
+  align-self: stretch;
   background-size: cover;
   text-align: center;
-  max-width: auto;
-  max-height: fit-content;
-  padding: 25% 0 5% 0;
+  padding: 25% 5% 5% 5%;
+}
+
+[class^="clients"] {
+  color: hsl(213, 9%, 39%);
+  text-align: center;
+}
+
+.clients > h2 {
+  font-family: var(--fontfamilysecond);
+  color: hsl(210, 4%, 67%);
+  font-variant: small-caps;
+  font-weight: bolder;
+  padding-top: 3em;
+}
+
+.clients__types {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clients__type {
+  padding: 2em;
+}
+
+.clients__img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  margin-bottom: 40px;
+}
+
+.clients__title-third {
+  font-family: var(--fontfamilysecond);
+  color: black;
+}
+
+.clients__title-fourth {
+  font-size: smaller;
+  color: hsl(210, 4%, 67%);
+}
+
+.footer-images {
+  display: flex;
+}
+
+.footer-images__img {
+  width: 100%;
+}
+
+.main-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(168, 34%, 60%);
+  color: hsl(167, 40%, 24%);
+  font-weight: bolder;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* https://qastack.mx/programming/22252472/how-to-change-the-color-of-an-svg-element*/
+.logo {
+  filter: invert(74%) sepia(35%) saturate(647%) hue-rotate(118deg) brightness(92%) contrast(88%);
+  width: auto;
+  margin: 20px 0;
+}
+
+@media (max-width: 775px) {
+  body {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 567px) {
+  body {
+    font-size: 18px;
+  }
+
+  .design {
+    flex-direction: column;
+  }
+
+  .design__type {
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    min-height: 400px;
+    padding: 0 10% 15% 10%;
+  }
+
+  [class^="design__"]:nth-child(2) {
+    order: 1;
+  }
+
+  [class^="design__"]:nth-child(1) {
+    order: 2;
+  }
+
+  [class^="design__"]:nth-child(3) {
+    order: 3;
+  }
+
+  [class^="design__"]:nth-child(4) {
+    order: 4;
+  }
+
+  [class^="design__"]:nth-child(5) {
+    order: 5;
+  }
+
+  [class^="design__"]:nth-child(6) {
+    order: 6;
+  }
+
+  .clients__types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
