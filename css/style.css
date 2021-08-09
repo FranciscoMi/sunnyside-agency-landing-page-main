@@ -12,17 +12,26 @@
 }
 
 body {
-  margin: 0;
-  font-size: 18px;
   font-family: var(--fontfamilyfirst);
+  margin-top: 0;
+  padding-top: 0;
   max-width: 1440px;
-  min-width: 350px;
   margin-left: auto;
   margin-right: auto;
 }
 
 a {
   text-decoration: none;
+}
+
+.header__menu {
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightsteelblue;
+  padding: 20px;
 }
 
 .header {
@@ -34,19 +43,11 @@ a {
   color: hsl(0, 0%, 100%);
 }
 
-.header__menu {
-  display: flex;
-  padding: 2em;
-  justify-content: space-between;
-}
-
 .link__menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 .link__option,
@@ -73,7 +74,6 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 [class^="main__title"] {
   font-family: var(--fontfamilysecond);
   font-weight: bolder;
-  width: fit-content;
 }
 
 .header__main-arrow {
@@ -87,6 +87,8 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   font-size: 4em;
   text-align: center;
   color: hsl(0, 0%, 100%);
+  margin-top: 0;
+  padding: 1em 0;
 }
 
 .main__title-second {
@@ -117,7 +119,6 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   flex-direction: column;
   color: hsl(213, 9%, 39%);
   padding: 0 5%;
-  min-width: calc(100%-200px);
   margin-left: auto;
   margin-right: auto;
 }
@@ -203,7 +204,10 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 }
 
 .footer-images__img {
+  /* Imprescindible añadir estas 3 lineas para que las imágenes se alineen en sus contenedores*/
   width: 100%;
+  height: 100%;
+  min-width: 0;
 }
 
 .main-footer {
@@ -244,13 +248,30 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 
 @media (max-width: 775px) {
   body {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 567px) {
   body {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .link__menu {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: calc(200px - 10%);
+    left: 5%;
+    background-color: white;
+    color: hsl(213, 9%, 39%);
+    width: 90%;
+  }
+
+  .link__option {
+    display: inline-block;
+    color: hsl(213, 9%, 39%);
+    padding: 10px;
   }
 
   .design {
@@ -301,7 +322,7 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   }
 
   [class^="footer-images__"] {
-    max-width: 50%;
+    /*Nos aseguramos de que las imagenes ocupen el 50% del contenedor al escalarse*/
     flex: 50%;
   }
 }
