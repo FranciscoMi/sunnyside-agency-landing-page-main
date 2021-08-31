@@ -12,6 +12,7 @@
 }
 
 body {
+  font-size: 18px;
   font-family: var(--fontfamilyfirst);
   margin-top: 0;
   padding-top: 0;
@@ -27,11 +28,12 @@ a {
 .header__menu {
   display: flex;
   position: sticky;
+  z-index: 10;
   top: 0;
   justify-content: space-between;
   align-items: center;
-  background-color: lightsteelblue;
-  padding: 20px;
+  background-color: hsl(200, 100%, 61%);
+  padding: 5px 20px;
 }
 
 .header {
@@ -50,22 +52,33 @@ a {
   list-style-type: none;
 }
 
-.link__option,
-.link__option-contact {
-  display: inline-block;
-  color: hsl(0, 0%, 100%);
-  font-size: 1em;
-  padding: 0 1em;
+.link__icon-hamburger {
+  display: none;
 }
 
-.link__option-contact {
+.link__menu > li {
+  display: block;
+  text-shadow: 1px 1px 1px #000000;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: background-color 1.5s, border-radius 1.5s, color 1.5s;
+}
+
+.link__menu > li:hover,
+.link__menu > li:focus {
+  display: block;
   font-family: var(--fontfamilysecond);
-  color: black;
   font-variant: small-caps;
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(200, 100%, 61%);
   border-radius: 20px;
+  -webkit-box-shadow: 1px 1px 5px 1px #000000;
+  box-shadow: 1px 1px 5px 1px #000000;
   padding: 0.5em 1em;
   margin: 0 0.5em;
+}
+
+.link__option {
+  color: hsl(0, 0%, 100%);
 }
 /*
 Para modificar los atributos de los elementos se encierran entre corchetes
@@ -80,6 +93,7 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   display: block;
   position: relative;
   top: -40px;
+  z-index: 0;
   text-align: center;
 }
 
@@ -101,10 +115,36 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 }
 
 .main__title-fourth {
-  width: 100%;
+  display: inline-block;
+  position: relative;
+  width: 50%;
+  padding-top: 15px;
+  font-size: 1em;
   font-variant: small-caps;
   color: black;
+
+  /*Generamos una animación de subrayado. sacado de la web 
+  https://www.oloblogger.com/2017/01/efectos-hover-lineas-animadas-enlaces.html*/
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
 }
+
+.main__title-fourth::after {
+  content: "think better";
+  position: absolute;
+  top: -15%;
+  left: 0px;
+  width: 100%;
+  transform-origin: left bottom;
+  transform: rotateX(90deg);
+}
+
+.main__title-fourth:hover,
+.main__title-fourth:focus {
+  transform-origin: center bottom;
+  transform: rotateX(-90deg) translateY(100%);
+}
+/*-------------*/
 
 .design {
   display: flex;
@@ -248,7 +288,7 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
 
 @media (max-width: 775px) {
   body {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -256,24 +296,51 @@ El apóstrofe ^ nos permite modificar los estilos por el comienzo
   body {
     font-size: 16px;
   }
+  .link__icon-hamburger {
+    display: inline-block;
+    position: relative;
+    right: 1em;
+    cursor: pointer;
+  }
+
+  .link__menu::before {
+    content: "";
+    position: absolute;
+    top: calc(-40px);
+    left: calc(100% - 40px);
+    border-right: 40px solid white;
+    border-top: 40px solid transparent;
+  }
 
   .link__menu {
-    display: none;
     position: absolute;
+    opacity: 0;
+    display: block;
+    border-radius: 10px 0 10px 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
     text-align: center;
-    top: calc(200px - 10%);
-    left: 5%;
+    top: 3.5em;
+    right: 3em;
     background-color: white;
-    color: hsl(213, 9%, 39%);
-    width: 90%;
+    width: 40%;
+    padding: 5px 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .link__menu-show {
+    opacity: 1;
   }
 
   .link__option {
-    display: inline-block;
-    color: hsl(213, 9%, 39%);
-    padding: 10px;
+    display: block;
+    padding: 5px;
+    margin: 5px 0;
   }
-
+  .link__menu > li:hover {
+    color: white;
+  }
   .design {
     flex-direction: column;
   }

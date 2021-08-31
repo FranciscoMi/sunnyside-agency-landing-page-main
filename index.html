@@ -19,12 +19,12 @@
   <body> 
     <nav class="header__menu">
         <img src="images/logo.svg" alt="sunnyside" />
-        <div class="link">
-          <ul class="link__menu">
+        <div class="link" onclick="showmenu()"><img class="link__icon-hamburger" src="images/icon-hamburger.svg" alt="icon-hamburguer" >
+          <ul class="link__menu" id="link__menu">
             <li><a href="#" class="link__option">About</a></li>
             <li><a href="#" class="link__option">Services</a></li>
             <li><a href="#" class="link__option">Projects</a></li>
-            <li><a href="#" class="link__option-contact">contact</a></li>
+            <li><a href="#" class="link__option">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -39,7 +39,7 @@
         <div class="design__type" id="design__box1">
           <h2 class="main__title-second">Transform your brand</h2>
           We are a full-service creative agency specializing in helping brands grow fast. Engage your clients through compelling visuals that do most of the marketing for you.
-          <h3 class="main__title-fourth">learn more</h3>
+          <a href="#" class="main__title-fourth">learn more</a>
         </div>
         <div class="design__img" id="design__box2">
           <img src="./images/desktop/image-transform.jpg" alt="transform" />
@@ -50,7 +50,7 @@
         <div class="design__type" id="design__box4">
           <h2 class="main__title-second">Stand out to the right audience</h2>
           Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters, we’ll build and extend your brand in digital places.
-          <h3 class="main__title-fourth">learn more</h3>
+          <a href="#" class="main__title-fourth">learn more</a>
         </div>
         <div class="design__type" id="design__box5">
           <h3 class="main__title-third">Graphic design</h3>
@@ -114,4 +114,5 @@
       </div>
     </footer>
   </body>
+  <script src="js/script.js"></script>
 </html>
